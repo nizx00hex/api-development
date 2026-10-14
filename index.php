@@ -9,14 +9,14 @@ $db = Database::connect();
 //     'secondname' => 'Nisath',
 //     'email' => 'nisathnisath606@gmail.com'
 // ];
-$data = json_encode([
-    'firstname' => 'Nisath',
-    'secondname' => 'Muhammed',
-    'username'=>'muhammed',
-    'email' => 'muhammed@gmail.com',
-]);
+// $data = json_encode([
+//     'firstname' => 'Nisath',
+//     'secondname' => 'Muhammed',
+//     'username'=>'muhammed',
+//     'email' => 'muhammed@gmail.com',
+// ]);
 
-Auth::register($data);
+// Auth::register($data);
 
 
 // if($db) {
@@ -32,3 +32,12 @@ Auth::register($data);
 // }
 // $user = new User();
 // $user->inserToken();
+
+
+
+// preg_match('/(foo)(bar)(baz)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
+// echo "<pre>";
+// print_r($matches[1]);
+// echo "</pre>";
+Token::create(8);
+?>
