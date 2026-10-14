@@ -1,7 +1,6 @@
 <?php
-require_once 'Response.php';
-class Database
-{
+class Database {
+
     private static ?PDO $connection = null;
 
     // Establishes and returns the database connection.

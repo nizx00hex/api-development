@@ -1,7 +1,7 @@
 {
     "server" : "localhost",
     "port": "3306",
-    "dn_name" : "auth",
+    "db_name" : "auth",
     "username" : "root",
     "password" : "adcO3Cxdj19w0sx",
     "charset" : "utf8mb4"
