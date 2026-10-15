@@ -1,6 +1,7 @@
 <?php
+require_once 'Test.class.php';
 
-class Auth {
+class User {
 
     private $username = 'nisath';
     private $password = 'password';
@@ -37,41 +38,30 @@ class Auth {
     //     // return $$this->token;
     // }
 
-    public static function register($data = []) {
-        // echo "<pre>";
-        // print_r($data);
-        // echo "</pre>";
+    public static function create($data = []) {
         try {
             $db = Database::connect();
 
             $data = json_decode($data, true);
-            $sql = "INSERT INTO `users` (`firstname`, `secondname`, `username`, `email`, `created_at`, `updated_at`, `status`, `is_verified`) VALUES (:firstname, :secondname, :username, :email, NOW(), NULL, 'active', '0');";
+            $sql = "INSERT INTO `users` (`firstname`, `secondname`, `username`, `email`, `password`, `created_at`, `updated_at`, `status`, `is_verified`) VALUES (:firstname, :secondname, :username, :email, :password , NOW(), NULL, 'active', '0');";
             $db->prepare($sql);
 
 
             $stmt = $db->prepare($sql);
-            // echo "<pre>";
-            // var_dump($stmt);
-            // echo "</pre>";
-            // exit;
-
+            Test::_this($stmt);
             $stmt->execute([
                 ':firstname' => $data['firstname'],
                 ':secondname' => $data['secondname'],
                 ':username' => $data['username'],
-                ':email' => $data['email']
+                ':email' => $data['email'],
+                ':password' => $data['password']
             ]);
-            // echo "<pre>";
-            // var_dump($stmt);
-            // echo "</pre>";
-            // exit;
-
-            $publisher_id = $db->lastInsertId();
-            echo "LAST_INSERT_ID: " . $publisher_id;
 
         } catch(PDOException $e) {
+            // throw new Exception($e->getMessage());
             echo $e->getMessage();
         }
+        return $db->lastInsertId();
     }
 
 

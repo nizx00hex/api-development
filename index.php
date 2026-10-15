@@ -1,43 +1,39 @@
 <?php
+
 require_once 'src/__init__.php';
 
-$db = Database::connect();
-//id	firstname	secondname	username	emai
-// $data = [
-//     'name'=>'nisath',
-//     'firstname' => 'Muhammed',
-//     'secondname' => 'Nisath',
-//     'email' => 'nisathnisath606@gmail.com'
-// ];
-// $data = json_encode([
-//     'firstname' => 'Nisath',
-//     'secondname' => 'Muhammed',
-//     'username'=>'muhammed',
-//     'email' => 'muhammed@gmail.com',
+// header('Content-Type: application/json');
+
+// // 1. Read Authorization header
+// $authHeader = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
+
+// // 2. Extract Bearer token
+// if (!preg_match('/^Bearer\s+(\S+)$/i', $authHeader, $matches)) {
+//     http_response_code(401);
+//     echo json_encode(['error' => 'Bearer token required']);
+//     exit;
+// }
+
+// $token = $matches[1];
+
+// // 3. Hash the token
+// $tokenHash = hash('sha256', $token);
+
+// // 4. Validate token against database
+// $tokenData = Token::findValid($tokenHash);
+
+// if (!$tokenData) {
+//     http_response_code(401);
+//     echo json_encode(['error' => 'Invalid or expired token']);
+//     exit;
+// }
+
+// // 5. Token is valid
+// echo json_encode([
+//     'success' => true,
+//     'message' => 'Authentication successful',
+//     'user_id' => $tokenData['user_id']
 // ]);
 
-// Auth::register($data);
-
-
-// if($db) {
-//     http_response_code(200);
-//     echo json_encode([
-//         'success' => "Database connected successfully."
-//     ]);
-// } else {
-//     http_response_code(500);
-//     echo json_encode([
-//         'error' => "Database connection is failed."
-//     ]);
-// }
-// $user = new User();
-// $user->inserToken();
-
-
-
-// preg_match('/(foo)(bar)(baz)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
-// echo "<pre>";
-// print_r($matches[1]);
-// echo "</pre>";
-Token::create(8);
-?>
+$id = Auth::signup('Muhammed', 'Nisath', 'nisath', 'nisathnisath@gmail.com', 'password', 'password');
+echo $id;
