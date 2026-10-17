@@ -3,41 +3,24 @@ require_once 'Test.class.php';
 
 class User {
 
-    private $username = 'nisath';
-    private $password = 'password';
-    private $token;
+    private $uid = null;
 
-    // public function  __construct() {
+    //check is user exist.
+    public function  __construct($identifier) {
+        $sql = '';
+        $stmt = $db->prepare();
+        $stmt->execute([
 
-    //     $user = $_GET['user'];
-    //     $pass = $_GET['pass'];
+        ]);
 
-    //     if(!empty($user) and !empty($pass)) {
-    //         if($this->username === $user and $this->password === $pass) {
-    //             self::Response(
-    //                 'success',
-    //                 "Welcome back, {$user}.",
-    //                 200
-    //             );
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    //             $this->token = md5('jo');
-    //         } else  {
-    //             self::Response(
-    //                 'error',
-    //                 'Please enter correct credentials',
-    //                 401
-    //             );
-    //         }
-    //     } else {
-    //         self::Response(
-    //             'error',
-    //             'Please enter your credentials.',
-    //             401
-    //         );
-    //     }
-    //     // return $$this->token;
-    // }
-
+        if(!$user) {
+            throw new Exception("User doesn't exist.");
+        }
+        return $user['id'];
+    }
+    //create the user.
     public static function create($data = []) {
         try {
             $db = Database::connect();
@@ -64,7 +47,7 @@ class User {
         return $db->lastInsertId();
     }
 
-
+    //isert token
     public function insertToken() {
         // echo $this->username;
         // echo $this->token;
@@ -78,6 +61,8 @@ class User {
          * update_at
          * //status ENUM('active', 'deactive')
          */
+
+
 
     }
 
