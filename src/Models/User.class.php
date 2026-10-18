@@ -5,12 +5,15 @@ class User {
 
     private $uid = null;
 
-    //check is user exist.
+    //check user is exist.
     public function  __construct($identifier) {
-        $sql = '';
-        $stmt = $db->prepare();
+        $db = Database::connect();
+        $sql = 'SELECT id, username, email FROM users WHERE id = :id OR username = :username OR email = :email';
+        $stmt = $db->prepare($sql);
         $stmt->execute([
-
+            ':id' => $identifier,
+            ':username' => $identifier,
+            ':email' => $identifier
         ]);
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -18,8 +21,13 @@ class User {
         if(!$user) {
             throw new Exception("User doesn't exist.");
         }
-        return $user['id'];
+        $this->uid = $user['id'];
     }
+
+    public function getId() {
+        return $this->uid;
+    }
+
     //create the user.
     public static function create($data = []) {
         try {

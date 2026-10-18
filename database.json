@@ -1,7 +1,7 @@
 {
     "server" : "localhost",
     "port": "3306",
-    "db_name" : "auth",
+    "db_name" : "ef_auth",
     "username" : "root",
     "password" : "adcO3Cxdj19w0sx",
     "charset" : "utf8mb4"

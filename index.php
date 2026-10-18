@@ -35,5 +35,17 @@ require_once 'src/__init__.php';
 //     'user_id' => $tokenData['user_id']
 // ]);
 
-$id = Auth::signup('Muhammed', 'Nisath', 'nisath', 'nisathnisath@gmail.com', 'password', 'password');
-echo $id;
+// $id = Auth::signup('Muhammed', 'Nisath', 'nisath', 'nisathnisath@gmail.com', 'password', 'password');
+// echo $id;
+
+$verfication = HashVerify::verifyTheHash('nisath', '84f2b448ea570b0cf954e2ac614d54335242a3e27f3b6184d2f228978805b2fb');
+echo $verfication;
+// // Test::_test();
+
+// echo HashVerify::verifyTheHash('8190f4b832a181347c022ab2469a5663', 'c4ca4238a0b923820dcc509a6f75849b', 12345678);
+
+
+//output: c0133544d9bfdc304c0ad262697e7fc8.username+id
+
+
+

@@ -3,9 +3,7 @@ require_once 'Models/Auth.class.php';
 require_once 'Models/Session.class.php';
 require_once 'Models/User.class.php';
 require_once 'Models/Database.class.php';
-require_once 'Models/Token.class.php';
-
-
+require_once 'Models/TokenVerify.class.php';
 
 
 require_once 'Core/Request.php';
